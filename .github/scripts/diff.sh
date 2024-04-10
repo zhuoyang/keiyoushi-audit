@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
 
-dir1="../main/repo/"
-dir2="."
+dir1=$1
+dir2=$2
 
 # Find APK files in the first directory and its subdirectories
 find "$dir1" -name "*.apk" -print0 | while IFS= read -r -d '' apk1

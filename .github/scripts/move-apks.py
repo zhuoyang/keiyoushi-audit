@@ -1,7 +1,7 @@
 from pathlib import Path
 import shutil
 
-REPO_APK_DIR = Path("repo/apk")
+REPO_APK_DIR = Path("unsigned/apk")
 
 try:
     shutil.rmtree(REPO_APK_DIR)

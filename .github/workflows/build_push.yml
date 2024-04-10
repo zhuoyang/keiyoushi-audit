@@ -118,11 +118,6 @@ jobs:
           ref: main
           path: main
 
-      - name: Create repo artifacts
-        run: |
-          cd main
-          python ./.github/scripts/move-apks.py
-
       - name: Checkout repo branch
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
@@ -130,8 +125,11 @@ jobs:
           ref: repo
           path: repo
 
-      - name: Deploy repo
+      - name: Move APKs
         run: |
-          cd repo
-          chmod a+x ../main/.github/scripts/diff.sh
-          ../main/.github/scripts/diff.sh
+          python main/.github/scripts/move-apks.py
+
+      - name: Diff APKs
+        run: |
+          chmod a+x main/.github/scripts/diff.sh
+          main/.github/scripts/diff.sh unsigned repo
