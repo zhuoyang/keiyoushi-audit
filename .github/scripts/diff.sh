@@ -2,10 +2,10 @@
 
 dir1=$1
 dir2=$2
-export fail=0
+fail=0
 echo "### Result" >> $GITHUB_STEP_SUMMARY
 # Find APK files in the first directory and its subdirectories
-find "$dir1" -name "*.apk" -print0 | while IFS= read -r -d '' apk1
+while IFS= read -r -d '' apk1
 do
   # Extract the base name of the APK file
   base_apk=$(basename "$apk1")
@@ -19,13 +19,13 @@ do
     python main/.github/scripts/apkdiff.py "$apk1" "$apk2"
     if [ $? -ne 0 ]; then
         echo " - $base_apk is different from source." >> $GITHUB_STEP_SUMMARY
-        export fail=1
+        fail=1
     fi
   else
     echo " - $base_apk does not exist in the source code." >> $GITHUB_STEP_SUMMARY
-    export fail=1
+    fail=1
   fi
-done
+done < <(find "$dir1" -name "*.apk" -print0)
 
 if [ $fail -eq 1 ]; then
   echo "### :x: APK files are different." >> $GITHUB_STEP_SUMMARY
