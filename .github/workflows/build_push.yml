@@ -133,4 +133,5 @@ jobs:
       - name: Deploy repo
         run: |
           cd repo
+          chmod a+x ../main/.github/scripts/diff.sh
           ../main/.github/scripts/diff.sh
