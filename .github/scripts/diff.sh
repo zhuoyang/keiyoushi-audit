@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 dir1=$1
 dir2=$2
