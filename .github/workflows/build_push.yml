@@ -29,6 +29,10 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
           repository: keiyoushi/extensions-source
+          
+      - name: Unsigned build
+        run: |
+          sed -i 's/signingConfig signingConfigs.release/signingConfig null/g' common.gradle
 
       - name: Validate Gradle Wrapper
         uses: gradle/wrapper-validation-action@b231772637bb498f11fdbc86052b6e8a8dc9fc92 # v2.1.2
@@ -69,10 +73,6 @@ jobs:
         with:
           java-version: 17
           distribution: temurin
-
-      - name: Unsigned build
-        run: |
-          sed -i 's/signingConfig signingConfigs.release/signingConfig null/g' common.gradle
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@e24011a3b5db78bd5ab798036042d9312002f252 # v3.2.0
