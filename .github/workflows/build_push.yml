@@ -1,4 +1,4 @@
-name: CI
+name: Diff
 
 on:
   push:
@@ -122,7 +122,8 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
           repository: keiyoushi/extensions
-          ref: 4bad38ccb1afbc3f1f4937b968b1af15994478fc
+          ref: 4bad38ccb1afbc3f1f4937b968b1af15994478fc # fail case
+          # ref: repo
           path: repo
 
       - name: Move APKs
@@ -132,4 +133,4 @@ jobs:
       - name: Diff APKs
         run: |
           chmod a+x main/.github/scripts/diff.sh
-          main/.github/scripts/diff.sh unsigned repo
+          main/.github/scripts/diff.sh repo unsigned
