@@ -5,6 +5,6 @@ This repo includes a Github Actions pipeline to build keiyoushi extensions APKs 
 Signature included in APK only guarantees APK distributed is built by the same party, but it doesn't guarantees APK is built with the respective source code. Read up more on [reproducible builds](https://en.wikipedia.org/wiki/Reproducible_builds).
 
 ## Status
-This Github Action Pipeline status will fail when the binary doesn't match the source code OR the binary is missing from the source code.
+This Github Action Pipeline status will fail when the binary doesn't match the source code OR the binary is missing from the source code. Example of failed run can be found [here](https://github.com/zhuoyang/keiyoushi-audit/actions/runs/8634739084/attempts/1#summary-23670995016).
 
 [![Diff](https://github.com/zhuoyang/keiyoushi-audit/actions/workflows/build_push.yml/badge.svg)](https://github.com/zhuoyang/keiyoushi-audit/actions/workflows/build_push.yml)
