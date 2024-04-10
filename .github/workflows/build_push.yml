@@ -28,7 +28,10 @@ jobs:
       - name: Clone repo
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
-          repository: keiyoushi/extensions-source
+          # repository: keiyoushi/extensions-source
+          ## fail case
+          repository: zhuoyang/extensions-source
+          ref: audit-fail
 
       - name: Validate Gradle Wrapper
         uses: gradle/wrapper-validation-action@b231772637bb498f11fdbc86052b6e8a8dc9fc92 # v2.1.2
@@ -64,7 +67,10 @@ jobs:
       - name: Checkout main branch
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
-          repository: keiyoushi/extensions-source
+          # repository: keiyoushi/extensions-source
+          ## fail case
+          repository: zhuoyang/extensions-source
+          ref: audit-fail
 
       - name: Unsigned build
         run: |
@@ -106,24 +112,16 @@ jobs:
         with:
           path: ~/apk-artifacts
 
-      - name: Set up JDK
-        uses: actions/setup-java@99b8673ff64fbf99d8d325f52d9a5bdedb8483e9 # v4.2.1
-        with:
-          java-version: 17
-          distribution: temurin
-
       - name: Checkout main branch
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
           ref: main
           path: main
-
       - name: Checkout repo branch
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
           repository: keiyoushi/extensions
-          ref: 4bad38ccb1afbc3f1f4937b968b1af15994478fc # fail case
-          # ref: repo
+          ref: repo
           path: repo
 
       - name: Move APKs
