@@ -103,8 +103,8 @@ jobs:
           path: "**/*.apk"
           retention-days: 1
 
-  publish_repo:
-    name: Publish repo
+  diff:
+    name: Diff APKs
     needs:
       - build_individual
     runs-on: ubuntu-latest
